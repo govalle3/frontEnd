@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { UserModel } from '../model/user.model';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   constructor(private http:HttpClient) { }
-  private users: Array<UserModel>;
-  public getUsers(): Array<UserModel>{
-    this.http.get("http://localhost:8080/findUsers").subscribe(res=>{
-      this.users = res as UserModel[];
-      console.log(this.users());
-    });
-    return this.users;
+
+  public getUsers(): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>("http://localhost:8080/findUsers");
+    
   }
 }

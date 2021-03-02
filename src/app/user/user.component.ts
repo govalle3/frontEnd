@@ -10,17 +10,17 @@ import { UserModel } from '../model/user.model';
   providers:[UserService]
 })
 export class UserComponent implements OnInit {
-
+  public users: Array<UserModel>;
   constructor(private userService:UserService) { }
-
-  private users: Array<UserModel>;
 
   ngOnInit() {
     this.loadUsers();
   }
 
   private loadUsers(): void{
-    
+    this.userService.getUsers().subscribe(res => {
+      this.users = res;
+    });
 
   }
 
