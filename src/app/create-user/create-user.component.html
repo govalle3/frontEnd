@@ -1,0 +1,42 @@
+<div class="clear"></div>
+<h1>Create new user</h1>
+
+<form class="form-horizontal main-form" action="/action_page.php">
+    <div *ngIf="!isValid" class="alert alert-danger" role="alert">
+        <strong>Danger!</strong> {{message}}.
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="firstName"><span class="required">*</span>First Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="user.firstName"
+                placeholder="Enter your first name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="lastName">Second Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="user.lastName"
+                placeholder="Enter your last name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="nationalId" [(ngModel)]="user.nationalId"><span
+                class="required">*</span>National Id:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="nationalId" id="nationalId"
+                placeholder="*Enter your Id number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="dob" [(ngModel)]="user.dob"><span class="required">*</span>Date of Birth:</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" name="dob" id="dob" a-ngModel="user.dob"
+                placeholder="*Enter your date of birth">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" (click)="newUser()" class="btn btn-default btn-save">Save</button>
+        </div>
+    </div>
+</form>
